@@ -26,7 +26,7 @@
 						<h1 class="text-center">Register Here !!</h1>
 						
 
-						<form th:action="@{/do_register}" method="post" th:object="user">
+						<form th:action="@{/do_register}" method="post" th:object="${user}">
 
 							
 							<!-- name field  -->
@@ -35,7 +35,9 @@
 								
 								<label for="exampleFormControlInput1">Your Name</label> 
 								
-								<input
+								 
+								<input						
+							        name ="name" 
 									type="text" 
 									class="form-control" 
 									id="name_field"
@@ -51,12 +53,13 @@
 								<label for="exampleFormControlInput1">Your Email</label> 
 								
 								<input
+									name ="email"
 									type="email" 
 									class="form-control" 
 									id="email_field"
 									placeholder="name@example.com"
 									required
-									th:value="${value.email}"
+									th:value="${user.email}"
 									>
 							</div>
 							
@@ -67,6 +70,7 @@
 								<label for="exampleFormControlInput1">Your Password</label> 
 								
 								<input
+									name ="password"
 									type="password" 
 									class="form-control" 
 									id="password_field"
@@ -78,7 +82,7 @@
 							
 							<div class="form-group">
 							
-								<textarea placeholder="Enter About yourself" rows="6" class="form-control"></textarea>
+								<textarea name ="about" th:value="${user.about}" placeholder="Enter About yourself" rows="6" class="form-control"></textarea>
 							</div>
 							
 							<!-- terms and condition   -->
