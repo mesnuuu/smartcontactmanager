@@ -41,6 +41,7 @@ public class HomeController {
 	public String signup(Model model) {
 		
 		model.addAttribute("title", "Registration");
+		model.addAttribute("user", new User());
 		return "signup";
 	}
 	
