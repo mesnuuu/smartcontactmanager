@@ -17,6 +17,7 @@ import com.smart.entities.User;
 @Controller
 public class HomeController {
 
+	// this object can be use to save entity in db.
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -71,7 +72,9 @@ public class HomeController {
 		System.out.println("Agreement " +agreement);
 		System.out.println("USER" +user);
 		
-		model.addAttribute("user", user);
+		User result = this.userRepository.save(user);
+		
+		model.addAttribute("user", result);
 		
 		return "signup";
 	}
