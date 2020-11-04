@@ -53,12 +53,25 @@ public class HomeController {
 	// handler for registering user
 	
 	@RequestMapping(value = "/do_register", method= RequestMethod.POST)
+	
 	public String registerUser(@ModelAttribute ("user") User user, 
-							   @RequestParam(value="agreement", defaultValue = "false")
-									boolean agreement, Model model) {
+							   @RequestParam(value="agreement", defaultValue = "false") boolean agreement, 
+							   Model model) 
+	{
 		
-		System.out.println("Agreement" +agreement);
+		if(!agreement) {
+			System.out.println("You have not agreed the terms and conditions.");
+		}
+		
+		user.setRole("ROLE_USER");
+		user.setEnabled(true);
+		
+		// decrypt password encoder object
+		
+		System.out.println("Agreement " +agreement);
 		System.out.println("USER" +user);
+		
+		model.addAttribute("user", user);
 		
 		return "signup";
 	}
